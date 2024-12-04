@@ -1,5 +1,12 @@
 import axios from 'axios';
 import { config } from './env';
+import {
+  type DiscoverMoviesRequest,
+  type DiscoverMoviesResponse,
+  type MovieCreditsResponse,
+  DiscoverMoviesResponseSchema,
+  MovieCreditsResponseSchema,
+} from './schema/movieDb';
 
 class MovieDbClient {
   private version = '3';
@@ -10,12 +17,22 @@ class MovieDbClient {
     },
   });
 
-  async discoverMovies() {
-    const response = await this.client.get('/discover/movie');
+  async discoverMovie(request: DiscoverMoviesRequest) {
+    const queryParams = new URLSearchParams(
+      Object.entries(request).map(([key, value]) => [key, value.toString()]),
+    );
+    const response = await this.client.get<DiscoverMoviesResponse>(
+      '/discover/movie?' + queryParams.toString(),
+    );
+    DiscoverMoviesResponseSchema.parse(response.data);
     return response.data;
   }
-  async movieCredits(movieId: string) {
-    const response = await this.client.get(`/movie/${movieId}/credits`);
+
+  async movieCredits(movieId: number) {
+    const response = await this.client.get<MovieCreditsResponse>(
+      `/movie/${movieId}/credits`,
+    );
+    MovieCreditsResponseSchema.parse(response.data);
     return response.data;
   }
 }
