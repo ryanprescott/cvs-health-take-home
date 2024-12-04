@@ -1,0 +1,15 @@
+{
+    "tabWidth": 2,
+    "trailingComma": "all",
+    "singleQuote": true,
+    "overrides": [
+        {
+            "files": [
+                ".eslintrc"
+            ],
+            "options": {
+                "trailingComma": "none"
+            }
+        }
+    ]
+}
