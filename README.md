@@ -6,8 +6,11 @@ This project is a take-home assignment for CVS Health. It demonstrates the abili
 
 ## Technologies Used
 
-- Language: Typescript
+- Language: TypeScript
 - Framework: Fastify
+- Types and Schemas: Zod
+- Testing Suite: Jest
+- Package Manager: pnpm
 
 ## Setup Instructions
 
@@ -21,7 +24,7 @@ This project is a take-home assignment for CVS Health. It demonstrates the abili
    ```
 3. Install the required dependencies:
    ```bash
-   pnpm i
+   pnpm install
    ```
 4. Set up the environment variables by copying `.env.example` to `.env` and adding the API key for The Movie Database.
 
@@ -32,7 +35,7 @@ This project is a take-home assignment for CVS Health. It demonstrates the abili
 
 ## Usage
 
-- Access the API data by querying `http://localhost:3000` in Postman, Insomnia, cURL or a similar tool.
+- Access the API data by querying `http://localhost:3000?year=xxxx` in Postman, Insomnia, cURL, or a similar tool. Year should be a four digit year.
 
 ## Testing
 
